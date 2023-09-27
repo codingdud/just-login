@@ -1,7 +1,4 @@
-FROM node:19-alpine3.16
-
-# Declaring env
-ENV NODE_ENV development
+FROM node:20-alpine3.17
 
 # Setting up the work directory
 WORKDIR /app
@@ -11,12 +8,11 @@ COPY . .
 
 # Installing dependencies
 RUN npm install 
-RUN npm install supervisor cross-env  -g
+RUN npm install supervisor  -g
 
 # Starting our application
 
-RUN cross-env NODE_ENV=production PORT=8080
 
 EXPOSE 8080
 
-CMD ["npm","app.js"]
+CMD ["supervisor","server.js"]
