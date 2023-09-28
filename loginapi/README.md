@@ -31,4 +31,5 @@ node start
 node sever.js
 ```
 
-help.md
+# For vercel deployment
+   [help.md](https://github.com/codingdud/just-login/blob/main/loginapi/help.md)
