@@ -1,12 +1,18 @@
+# HELP IN PREVIEWING & GENERATING HTML FROM POSTMAN JSON FILE 
+### for web view
 
-# for web view
+ ```bash 
+ ./windows_amd64.exe server -f login.postman_collection.json -p 8000
+ ```
 
-> ```./windows_amd64.exe server -f login.postman_collection.json -p 8000```
+### for md view
 
-# for md view
+ ```bash
+ ./windows_amd64.exe server -f login.postman_collection.json -p 8000 -m
+ ```
 
-> `./windows_amd64.exe server -f login.postman_collection.json -p 8000 -m`
+### fro html file
 
-# fro html file
-
-> ``./windows_amd64.exe build -i input-postman-collection.json -o ./index.html``
+ ```bash
+./windows_amd64.exe build -i input-postman-collection.json -o ./index.html
+```
