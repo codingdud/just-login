@@ -25,7 +25,7 @@ mongoose.connect(`${mongoid}${db}?retryWrites=true&w=majority`, {
 
 // Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/views/index.html'));
 });
 app.use('/users', userRoutes);
 
