@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 
 const cors=require('cors')
 const cookieparser = require('cookie-parser');
-
+const path = require('path');
 const app = express();
 
 dotenv.config({path:'./.env'})
@@ -24,6 +24,9 @@ mongoose.connect(`${mongoid}${db}?retryWrites=true&w=majority`, {
 });
 
 // Routes
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/views/index.html'));
+});
 app.use('/users', userRoutes);
 
 const PORT = process.env.PORT || 8080;
