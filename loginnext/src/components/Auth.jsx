@@ -5,18 +5,14 @@ const Acontext=createContext(null)
 
 export const AuthProvider=({children})=>{
     const [user,setUser]=useState(null)
-    const [passw,setPassw]=useState(null)
 
-    const login=(user,passw)=>{
+    const login=(user)=>{
         setUser(user)
-        setPassw(passw)
     }
     const logout=()=>{
-        setUser(null)
-        setPassw(null)
-        
+        setUser(null)    
     }
-    return(<Acontext.Provider value={{user, passw, login ,logout}}>
+    return(<Acontext.Provider value={{user, login ,logout}}>
         {children}
     </Acontext.Provider>)
 

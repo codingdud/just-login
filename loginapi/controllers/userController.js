@@ -36,8 +36,8 @@ const login = async (req, res) => {
             return res.json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key');
-        const rtoken = jwt.sign({ username: user.username }, 'your_refresh_token_secret');
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "35s" });
+        const rtoken = jwt.sign({ username: user.username }, 'your_refresh_token_secret',{ expiresIn: "5m" });
         res.cookie('jwt',rtoken,{ httpOnly: true, 
             sameSite: 'None', secure: true, 
             maxAge: 24 * 60 * 60 * 1000 })
@@ -69,7 +69,8 @@ const authenticate=(req,res,next)=>{
 const refreshToken=async (req, res) => {
     try {
       const refreshToken = req.cookies?.jwt;
-      console.log(req.cookies?.jwt)
+      //console.log(req.body)
+      //console.log(req.cookies?.jwt)
   
       if (refreshToken === null) return res.sendStatus(401);
   

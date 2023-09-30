@@ -13,12 +13,12 @@ function Login() {
   const handleLogin=async(e)=>{
     e.preventDefault();
     console.log(JSON.stringify({ username, password }))
-    const temp=JSON.stringify({ username, password })
-    axios.post('//localhost:5001/users/login',{"username":username,"password":password})
+    axios.post('https://loginapi-hs1tn3el1-codingdud.vercel.app/users/login',{"username":username,"password":password}, {withCredentials: true, credentials: 'include'})
     .then((res)=>{
       console.log(res.data)
+      auth.login(res.data)
     })
-    auth.login(username,password)
+    
     navigate(redirectPath,{replace:true})
   }
   return (

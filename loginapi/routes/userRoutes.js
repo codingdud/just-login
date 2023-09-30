@@ -7,5 +7,4 @@ router.post('/login',login);
 router.post('/refreshToken',refreshToken);
 router.get('/authenticate',authenticate);
 
-
 module.exports = router;
