@@ -9,7 +9,7 @@ import About from './components/About';
 import Product from './components/Product';
 import Profile from './components/Profile';
 import Register from './components/Register';
-import { AuthProvider } from './components/Auth';
+import { AuthProvider } from './hooks/Auth';
 import RequireAuth from './components/RequireAuth';
 
 function App() {

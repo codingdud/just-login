@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-import { useAuth } from './Auth'
+import { useAuth } from '../hooks/Auth'
 
 
 function Nav({ toggle }) {
@@ -9,14 +9,14 @@ function Nav({ toggle }) {
         return {
             fontWeight: isActive ? "bold" : "normal",
             TextDecoration: isActive ? "none" : "underline",
-            color: isActive ? "var(--primary)" : "var(--text)",
+            color: isActive ? "var(--accent)" : "var(--secondary)",
         }
     }
     return (
         <div className='flex flex-col justify-between  w-full items-start'>
-            <nav className='flex flex-row justify-between w-full items-center p-2'>
+            <nav className='flex-no-wrap relative flex flex-row justify-between w-full items-center p-2 shadow-md shadow-black/5'>
                 <div>
-                    {!auth.user ? (
+                    {!auth.user.accessToken ? (
                         <>
                             <NavLink style={navLinkStyles} to="/">Home</NavLink>
                             <NavLink style={navLinkStyles} to='/login'>Login</NavLink>
@@ -38,7 +38,7 @@ function Nav({ toggle }) {
                         <circle cx="24" cy="48" r="25" fill="var(--text)" />
                     </svg>
                 </button>
-                {auth.user && (
+                {auth.user.accessToken && (
                     <NavLink style={navLinkStyles} to="/profile">Profile</NavLink>
                 )}
                 </div>
@@ -48,7 +48,10 @@ function Nav({ toggle }) {
                 <path d="M0 1H1800" stroke='var(--text)' />
             </svg>
 
-            <Outlet />
+            <div className=' w-full h-full flex flex-col flex-grow place-content-center'>
+                <Outlet />
+            </div>
+            
         </div>
     )
 }

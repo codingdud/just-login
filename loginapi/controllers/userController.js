@@ -36,7 +36,7 @@ const login = async (req, res) => {
             return res.json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "35s" });
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "15s" });
         const rtoken = jwt.sign({ username: user.username }, 'your_refresh_token_secret',{ expiresIn: "5m" });
         res.cookie('jwt',rtoken,{ httpOnly: true, 
             sameSite: 'None', secure: true, 
@@ -54,7 +54,7 @@ const authenticate=(req,res,next)=>{
     if(accessToken){
         jwt.verify(accessToken,'your_secret_key',(err,user)=>{
             if(err){
-                res.status(404).json({message:"invalid"})
+                res.status(403).json({message:"invalid"})
             }else{
                 req.username=user.username;
             }
@@ -78,7 +78,7 @@ const refreshToken=async (req, res) => {
         if (err) return res.sendStatus(403);
   
         const accessToken = jwt.sign({ username: user.username }, 'your_secret_key', {
-          expiresIn: '15m', // Short-lived token
+          expiresIn: '15s', // Short-lived token
         });
   
         return res.json({ accessToken });

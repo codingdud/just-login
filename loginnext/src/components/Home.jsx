@@ -4,7 +4,7 @@ function Home() {
  
   return (
     <>
-    <h3 className='text-primary'>Home</h3>
+    <h3 className='text-accent'>Home</h3>
     </>
     
   )

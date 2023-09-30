@@ -4,7 +4,7 @@ const {register,login,authenticate,refreshToken}=require('../controllers/userCon
 
 router.post('/register',register);
 router.post('/login',login);
-router.post('/refreshToken',refreshToken);
+router.get('/refreshToken',refreshToken);
 router.get('/authenticate',authenticate);
 
 module.exports = router;

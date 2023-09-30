@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useAuth } from './Auth'
-import axios from 'axios'
+import { useAuth } from '../hooks/Auth'
+import axios from '../api/axios.js'
 import { useNavigate,useLocation } from 'react-router-dom'
+
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -13,7 +14,7 @@ function Login() {
   const handleLogin=async(e)=>{
     e.preventDefault();
     console.log(JSON.stringify({ username, password }))
-    axios.post('https://loginapi-hs1tn3el1-codingdud.vercel.app/users/login',{"username":username,"password":password}, {withCredentials: true, credentials: 'include'})
+    axios.post(`/users/login`,{"username":username,"password":password}, {withCredentials: true, credentials: 'include'})
     .then((res)=>{
       console.log(res.data)
       auth.login(res.data)
@@ -21,8 +22,11 @@ function Login() {
     
     navigate(redirectPath,{replace:true})
   }
+  
   return (
-    <div>
+    <div >
+      <div className='flex flex-col justify-center items-center gap-[19px]'>
+      <h4>just-login</h4>
       <label>
         Username:{' '}
         <input className='bg-primary' type='text' onChange={e=>setUsername(e.target.value)}/>
@@ -32,6 +36,7 @@ function Login() {
         <input className='bg-primary' type='text' onChange={e=>setPassword(e.target.value)}/>
       </label>
       <button onClick={handleLogin}>Login</button>
+      </div>
     </div>
   )
 }

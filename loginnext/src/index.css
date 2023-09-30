@@ -32,8 +32,8 @@ html {
 
   --text: rgb(0, 0, 0);
   --background: rgb(255, 255, 255);
-  --primary: rgb(76, 119, 212);
-  --secondary: rgb(45, 192, 158);
+  --primary: rgb(124, 166, 255);
+  --secondary: rgb(30, 129, 106);
   --accent: rgb(212, 29, 108);
   --rob:"robot";
   --robit:"robotital";
@@ -43,7 +43,7 @@ html {
 :root[data-theme='dark'] {
   --text: rgb(255, 255, 255);
   --background: rgb(0, 0, 0);
-  --primary: rgb(143, 179, 255);
+  --primary: rgb(45, 58, 85);
   --secondary: rgb(153, 240, 212);
   --accent: rgb(241, 153, 191);
 }
