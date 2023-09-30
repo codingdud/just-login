@@ -1,8 +1,11 @@
 import axios from 'axios';
-const BASE_URL = 'https://loginapi-a01kxautv-codingdud.vercel.app';
+const BASE_URL = 'https://loginapi-q785gydoq-codingdud.vercel.app';
 
 export default axios.create({
-    baseURL: BASE_URL
+    baseURL: BASE_URL,
+    headers:{
+        "Access-Control-Allow-Origin": true
+    }
 });
 
 export const axiosPrivate = axios.create({
