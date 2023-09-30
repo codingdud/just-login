@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'https://loginapi-oeafcq8l5-codingdud.vercel.app';
+const BASE_URL = 'https://loginapi-i7apm84tm-codingdud.vercel.app';
 
 export default axios.create({
     baseURL: BASE_URL
