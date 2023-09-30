@@ -13,7 +13,17 @@ function Profile() {
     auth.logout()
     navigate('/')
   }
-
+  const handleTest=async(e)=>{
+    e.preventDefault();
+    axiosPrivate.get('/users/test')
+    .then((res)=>{
+      console.log(res.data)
+      //console.log("auth",auth?.user)
+    })
+    navigate(redirectPath,{replace:true})
+    console.log(auth?.user)
+  }
+  
   const handleAuth=async(e)=>{
     e.preventDefault();
     axiosPrivate.get('/users/authenticate')
@@ -40,6 +50,7 @@ function Profile() {
     <button onClick={handleLogout}>Logout</button>
     <button onClick={handleRefresh}>referesh</button>
     <button onClick={handleAuth}>Auth</button>
+    <button onClick={handleTest}>test</button>
 
     </div>
 
