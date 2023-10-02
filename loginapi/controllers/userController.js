@@ -49,9 +49,8 @@ const login = async (req, res) => {
 
 const authenticate=(req,res,next)=>{
     const token=req.headers['authorization'];
-    const accessToken = token.split(" ")[1];
-    console.log(req.headers);
-    if(accessToken){
+    if(token){
+        const accessToken = token.split(" ")[1];
         jwt.verify(accessToken,'your_secret_key',(err,user)=>{
             if(err){
                 res.status(403).json({message:"invalid"})
@@ -59,8 +58,8 @@ const authenticate=(req,res,next)=>{
                 req.username=user.username;
             }
         })
-        //next();
-        res.status(202).json({message:"success"})
+        next();
+        //res.status(202).json({message:"success"})
     }else{
         res.status(202).json({message:"not found"})
     }

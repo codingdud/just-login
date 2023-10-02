@@ -18,19 +18,18 @@ app.use(cookieparser())
 app.use(bodyParser.json())
 
 
-/* const whitelist = [ 
-  'http://localhost:5173', // not https
-  'https://yourprod.ip.address.com', // must be https!
-  'http://10.5.119.50:5173', // optional, LAN access
+const whitelist = [ 
+  'http://localhost:5173', // local
+  'https://just-login-phi.vercel.app', // production 1
+  'https://loginapi.sysopengineer.tech' //production 2
 ]
-
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
 
       // `!origin` allows server-to-server requests (ie, localhost requests)
       if(!origin || whitelist.indexOf(origin) !== -1) {
-          callback(null, true)
+          callback(null, origin)
       } else {
           callback(new Error("Not allowed by CORS: "+ origin))
       }
@@ -38,11 +37,11 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
-app.use(cors(corsOptions)) */
+app.use(cors(corsOptions))
 app.use(cors({ origin: true, credentials: true }));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  //res.setHeader('Access-Control-Allow-Origin', `${whitelist[whitelist.indexOf(og)]}`);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Content-Type', 'text/html');
@@ -67,4 +66,5 @@ app.use('/users', userRoutes);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  
 });
