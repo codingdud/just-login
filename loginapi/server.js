@@ -20,8 +20,7 @@ app.use(bodyParser.json())
 
 const whitelist = [ 
   'http://localhost:5173', // local
-  'https://loginapi-codingdud.vercel.app/', // production 1
-  'https://just-login-phi.vercel.app/', //production 2
+  'https://just-login-phi.vercel.app', // production
 ]
 const corsOptions = {
   credentials: true,
