@@ -20,7 +20,8 @@ app.use(bodyParser.json())
 
 const whitelist = [ 
   'http://localhost:5173', // local
-  'https://just-login-phi.vercel.app', // production
+  'https://just-login-phi.vercel.app', // production 1
+  'https://login.sysopengineer.tech' //production 2
 ]
 const corsOptions = {
   credentials: true,

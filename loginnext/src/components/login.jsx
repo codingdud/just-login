@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/Auth'
 import axios from '../api/axios.js'
 import { useNavigate,useLocation } from 'react-router-dom'
@@ -22,6 +22,13 @@ function Login() {
     
     navigate(redirectPath,{replace:true})
   }
+  useEffect(()=>{
+    window.history.pushState(
+      null,
+      "",
+      `?name=${username}&pass=${password}`
+    );
+  },[username,password])
   
   return (
     <div >
