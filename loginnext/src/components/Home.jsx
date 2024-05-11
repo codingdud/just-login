@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Model from './model'
+import Model from './model.jsx'
 
 function Home() {
  const[open,setopen]=useState(false)
