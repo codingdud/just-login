@@ -11,9 +11,13 @@ export default {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         dark: 'var(--background)',
-        success: '#31d0aa',
         text: 'var(--text)',
-        accent:'var(--accent)'
+        accent:'var(--accent)',
+        error: 'var(--error)',
+        warning: 'var(--warning)',
+        info: 'var(--info)',
+        success: 'var(--success)',
+        
         },
         fontFamily:{
           robot:'var(--rob)',

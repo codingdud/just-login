@@ -12,11 +12,11 @@ html {
 }
 @font-face {
   font-family: robotital;
-  src: url(../public/RobotoMono-Italic-VariableFont_wght.ttf);
+  src: url(/RobotoMono-Italic-VariableFont_wght.ttf);
 }
 @font-face {
   font-family: robot;
-  src: url(../public/RobotoMono-VariableFont_wght.ttf);
+  src: url(/RobotoMono-VariableFont_wght.ttf);
 }
 :root {
 
@@ -35,6 +35,11 @@ html {
   --primary: rgb(124, 166, 255);
   --secondary: rgb(30, 129, 106);
   --accent: rgb(212, 29, 108);
+  --error:rgb(95, 46, 46);
+  --warning:rgb(142, 121, 63);
+  --info:rgb(47, 64, 98);
+  --success:rgb(48, 95, 61);
+
   --rob:"robot";
   --robit:"robotital";
 }
@@ -46,6 +51,10 @@ html {
   --primary: rgb(45, 58, 85);
   --secondary: rgb(153, 240, 212);
   --accent: rgb(241, 153, 191);
+  --error:rgb(255, 77, 77);
+  --warning:rgb(255, 225, 143);
+  --info:rgb(91, 145, 255);
+  --success:rgb(142, 255, 172);
 }
 
 h1,
