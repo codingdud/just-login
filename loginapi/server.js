@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 const cookieparser = require('cookie-parser');
 const cors=require('cors')
 const path = require('path');
@@ -59,9 +60,10 @@ mongoose.connect(`${mongoid}${db}?retryWrites=true&w=majority`, {
 
 // Routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/views/login.html'));
 });
 app.use('/users', userRoutes);
+app.use('/product', productRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

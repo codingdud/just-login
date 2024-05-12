@@ -425,7 +425,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"akanoob\",\r\n    \"password\":\"password\"\r\n}",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1084,9 +1084,576 @@
 							"body": "{\"hello\":\"hi\"}"
 						}
 					]
+				},
+				{
+					"name": "{{production}}/users/test",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFrYW5vb2IiLCJpYXQiOjE2OTYyNzAwNTcsImV4cCI6MTY5NjI3MDA3Mn0.lwuoeoEmibQ1Zfil-rjgCNMXymqIMLnxhkqTARwoq7o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{production}}/users/test",
+							"host": [
+								"{{production}}"
+							],
+							"path": [
+								"users",
+								"test"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"description": "it contain login , resitration, and jwt authoriation and refresh token api"
+			"description": "it contain login , resitration, and jwt authoriation and refresh token api",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFrYW5vb2IiLCJpYXQiOjE2OTU4NTI3NDUsImV4cCI6MTY5NTg1MzY0NX0.9GkKQ90hWBmfsNc0SyA3TkW5THNsWFRCuasieaeXFaw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"pm.environment.get(\"variable_key\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "getproducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"imageURL\":\"url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/product/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"imageURL\":\"url\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/product/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "s-max-age=1, stale-while-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"be-ozyhDDqut1ffbpEb3e9GlJrx6UU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:49:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"_id\":\"664100eff1638c9f1bb658ca\",\"name\":\"test name\",\"description\":\"little desc\",\"price\":190,\"category\":\"test\",\"quantity\":0,\"imageURL\":\"url\",\"createdAt\":\"2024-05-12T17:48:31.163Z\",\"__v\":0}]"
+						}
+					]
+				},
+				{
+					"name": "createProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"imageURL\":\"url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/product/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"imageURL\":\"url\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/product/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "s-max-age=1, stale-while-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "212"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d4-Q11899RIYOrKb7EW/OAa1VBTgtw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:58:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true,\"data\":{\"name\":\"test name\",\"description\":\"little desc\",\"price\":190,\"category\":\"test\",\"quantity\":0,\"imageURL\":\"url\",\"_id\":\"664103407678aa9d1827997b\",\"createdAt\":\"2024-05-12T17:58:24.184Z\",\"__v\":0}}"
+						}
+					]
+				},
+				{
+					"name": "getbyid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/product/664100eff1638c9f1bb658ca",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								"664100eff1638c9f1bb658ca"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/product/664100eff1638c9f1bb658ca",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										"664100eff1638c9f1bb658ca"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "s-max-age=1, stale-while-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "189"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bd-SdJIyE2IpsszZiov0200CJnTA84\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:57:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\"_id\":\"664100eff1638c9f1bb658ca\",\"name\":\"test name\",\"description\":\"little desc\",\"price\":190,\"category\":\"test\",\"quantity\":20,\"imageURL\":\"url\",\"createdAt\":\"2024-05-12T17:48:31.163Z\",\"__v\":0}"
+						}
+					]
+				},
+				{
+					"name": "updatebyid",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"quantity\":20,\r\n    \"imageURL\":\"url\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/product/664100eff1638c9f1bb658ca",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								"664100eff1638c9f1bb658ca"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getbyid Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"test name\",\r\n    \"description\": \"little desc\",\r\n    \"price\":190,\r\n    \"category\":\"test\",\r\n    \"quantity\":20,\r\n    \"imageURL\":\"url\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/product/664100eff1638c9f1bb658ca",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										"664100eff1638c9f1bb658ca"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "s-max-age=1, stale-while-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "213"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d5-uAtGx2rlStjBqtYm/BWEh6mhufA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:56:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true,\"data\":{\"_id\":\"664100eff1638c9f1bb658ca\",\"name\":\"test name\",\"description\":\"little desc\",\"price\":190,\"category\":\"test\",\"quantity\":20,\"imageURL\":\"url\",\"createdAt\":\"2024-05-12T17:48:31.163Z\",\"__v\":0}}"
+						}
+					]
+				},
+				{
+					"name": "deleteproduct",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/product/664103407678aa9d1827997b",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										"664103407678aa9d1827997b"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "s-max-age=1, stale-while-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-EI5NysibK/ftuLJURlm6QTpdGxs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 17:58:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":false,\"error\":\"Product not found\"}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1094,7 +1661,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "",
+				"value": "{{access}}",
 				"type": "string"
 			}
 		]
