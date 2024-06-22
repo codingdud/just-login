@@ -47,6 +47,31 @@ const login = async (req, res) => {
     }
 }
 
+const loginMobile = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        const user = await User.findOne({ username });
+
+        if (!user) {
+            return res.json({ message: 'Invalid credentials' }).status(400);
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.json({ message: 'Invalid credentials' });
+        }
+
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "1m" });
+        const refreshToken = jwt.sign({ username: user.username }, 'your_refresh_token_secret',{ expiresIn: "5m" });
+        
+        return  res.json({accessToken,refreshToken});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 const authenticate=(req,res,next)=>{
     const token=req.headers['authorization'];
     if(token){
@@ -86,6 +111,27 @@ const refreshToken=async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   }
+  const refreshTokenMobile=async (req, res) => {
+    try {
+      const refreshToken = req.body
+      //console.log(req.body)
+      //console.log(req.cookies?.jwt)
+  
+      if (refreshToken === null) return res.sendStatus(401);
+  
+      jwt.verify(refreshToken, 'your_refresh_token_secret', (err, user) => {
+        if (err) return res.sendStatus(403);
+  
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key', {
+          expiresIn: '15s', // Short-lived token
+        });
+  
+        return res.json({ accessToken });
+      });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  }
 
 
 module.exports = {
@@ -93,4 +139,5 @@ module.exports = {
     login,
     authenticate,
     refreshToken,
+    loginMobile,
 }

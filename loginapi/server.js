@@ -39,10 +39,10 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use(cors({ origin: true, credentials: true }));
 
 app.use((req, res, next) => {
-  //res.setHeader('Access-Control-Allow-Origin', `${whitelist[whitelist.indexOf(og)]}`);
+  //console.log(req);
+  res.setHeader('Access-Control-Allow-Origin', `https://login.sysopengineer.tech`);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Content-Type', 'text/html');
