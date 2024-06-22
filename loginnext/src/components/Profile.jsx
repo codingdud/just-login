@@ -20,6 +20,9 @@ function Profile() {
       console.log(res.data)
       //console.log("auth",auth?.user)
     })
+    .catch((err)=>{
+      console.log(err)
+    })
     navigate(redirectPath,{replace:true})
     console.log(auth?.user)
   }
@@ -31,6 +34,9 @@ function Profile() {
       console.log(res.data)
       //console.log("auth",auth?.user)
     })
+    .catch((err)=>{
+      console.log(err)
+    })
     navigate(redirectPath,{replace:true})
     console.log(auth?.user)
   }
@@ -41,6 +47,9 @@ function Profile() {
     .then((res)=>{
       console.log(res.data)
       //console.log("auth",auth?.user)
+    })
+    .catch((err)=>{
+      console.log(err)
     })
     navigate(redirectPath,{replace:true})
     console.log(auth?.user)
