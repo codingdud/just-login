@@ -27,7 +27,7 @@ const whitelist = [
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
-    //console.log(origin)
+    console.log(origin)
     // `!origin` allows server-to-server requests (ie, localhost requests)
     if(!origin || whitelist.indexOf(origin) !== -1) {
         callback(null, origin)

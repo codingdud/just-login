@@ -25,8 +25,8 @@ function Profile() {
     .catch((err)=>{
       console.log(err)
     })
-    navigate(redirectPath,{replace:true})
-    console.log(auth?.user)
+    //navigate(redirectPath,{replace:true})
+    //console.log(auth?.user)
   }
   
   const handleAuth=async(e)=>{
@@ -39,8 +39,8 @@ function Profile() {
     .catch((err)=>{
       console.log(err)
     })
-    navigate(redirectPath,{replace:true})
-    console.log(auth?.user)
+    //navigate(redirectPath,{replace:true})
+    //console.log(auth?.user)
   }
 
   const handleRefresh=async(e)=>{
@@ -53,8 +53,8 @@ function Profile() {
     .catch((err)=>{
       console.log(err)
     })
-    navigate(redirectPath,{replace:true})
-    console.log(auth?.user)
+    //navigate(redirectPath,{replace:true})
+    //console.log(auth?.user)
   }
   return (
     <div>Wellcom {auth?.user?.accessToken}
