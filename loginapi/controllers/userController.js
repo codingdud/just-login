@@ -36,7 +36,7 @@ const login = async (req, res) => {
             return res.json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "1m" });
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "15s" });
         const rtoken = jwt.sign({ username: user.username }, 'your_refresh_token_secret',{ expiresIn: "5m" });
         res.cookie('jwt',rtoken,{ httpOnly: true, 
             sameSite: 'None', secure: true, 
@@ -63,7 +63,7 @@ const loginMobile = async (req, res) => {
             return res.json({ message: 'Invalid credentials' });
         }
 
-        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "1m" });
+        const accessToken = jwt.sign({ username: user.username }, 'your_secret_key',{ expiresIn: "15s" });
         const refreshToken = jwt.sign({ username: user.username }, 'your_refresh_token_secret',{ expiresIn: "5m" });
         
         return  res.json({accessToken,refreshToken});
@@ -86,7 +86,7 @@ const authenticate=(req,res,next)=>{
         next();
         //res.status(202).json({message:"success"})
     }else{
-        res.status(202).json({message:"not found"})
+        res.status(202).json({message:"not found jwt token"})
     }
 }
 

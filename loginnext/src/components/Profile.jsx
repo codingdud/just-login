@@ -9,6 +9,8 @@ function Profile() {
   const axiosPrivate=useAxiosPrivate()
   const auth=useAuth()
   const navigate=useNavigate()
+  const location =useLocation()
+  const redirectPath=location.state?.path||'/'
   const handleLogout=()=>{
     auth.logout()
     navigate('/')

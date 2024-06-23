@@ -27,22 +27,22 @@ const whitelist = [
 const corsOptions = {
   credentials: true,
   origin: (origin, callback) => {
-
-      // `!origin` allows server-to-server requests (ie, localhost requests)
-      if(!origin || whitelist.indexOf(origin) !== -1) {
-          callback(null, origin)
-      } else {
-          callback(new Error("Not allowed by CORS: "+ origin))
-      }
+    //console.log(origin)
+    // `!origin` allows server-to-server requests (ie, localhost requests)
+    if(!origin || whitelist.indexOf(origin) !== -1) {
+        callback(null, origin)
+    } else {
+        callback(new Error("Not allowed by CORS: "+ origin))
+    }
   },
   optionsSuccessStatus: 200
 }
 
-app.use(cors(corsOptions))
+app.use('*',cors(corsOptions))
 
 app.use((req, res, next) => {
-  //console.log(req);
-  res.setHeader('Access-Control-Allow-Origin', `https://login.sysopengineer.tech`);
+ // console.log(req.headers.origin)
+  res.setHeader('Access-Control-Allow-Origin', `${whitelist[whitelist.indexOf(req.headers.origin)]}`);
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Content-Type', 'text/html');
