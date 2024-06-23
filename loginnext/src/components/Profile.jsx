@@ -1,7 +1,7 @@
 import React from 'react'
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useAuth } from '../hooks/Auth'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import  useRefreshToken  from '../hooks/useRefreshToken'
 
 function Profile() {
