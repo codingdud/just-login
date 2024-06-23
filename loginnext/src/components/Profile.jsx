@@ -57,7 +57,9 @@ function Profile() {
     //console.log(auth?.user)
   }
   return (
-    <div>Wellcom {auth?.user?.accessToken}
+    <div>Wellcom 
+      {auth?.user?.accessToken}
+    <br/>
     <button onClick={handleLogout}>Logout</button>
     <button onClick={handleRefresh}>referesh</button>
     <button onClick={handleAuth}>Auth</button>
